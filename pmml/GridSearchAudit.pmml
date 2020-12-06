@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.5.28"/>
+		<Timestamp>2020-01-09T05:58:26Z</Timestamp>
+	</Header>
+	<DataDictionary>
+		<DataField name="Adjusted" optype="categorical" dataType="integer">
+			<Value value="0"/>
+			<Value value="1"/>
+		</DataField>
+		<DataField name="Education" optype="categorical" dataType="string">
+			<Value value="Associate"/>
+			<Value value="Bachelor"/>
+			<Value value="College"/>
+			<Value value="Doctorate"/>
+			<Value value="HSgrad"/>
+			<Value value="Master"/>
+			<Value value="Preschool"/>
+			<Value value="Professional"/>
+			<Value value="Vocational"/>
+			<Value value="Yr10"/>
+			<Value value="Yr11"/>
+			<Value value="Yr12"/>
+			<Value value="Yr1t4"/>
+			<Value value="Yr5t6"/>
+			<Value value="Yr7t8"/>
+			<Value value="Yr9"/>
+		</DataField>
+		<DataField name="Marital" optype="categorical" dataType="string">
+			<Value value="Absent"/>
+			<Value value="Divorced"/>
+			<Value value="Married"/>
+			<Value value="Married-spouse-absent"/>
+			<Value value="Unmarried"/>
+			<Value value="Widowed"/>
+		</DataField>
+		<DataField name="Occupation" optype="categorical" dataType="string">
+			<Value value="Cleaner"/>
+			<Value value="Clerical"/>
+			<Value value="Executive"/>
+			<Value value="Farming"/>
+			<Value value="Home"/>
+			<Value value="Machinist"/>
+			<Value value="Military"/>
+			<Value value="Professional"/>
+			<Value value="Protective"/>
+			<Value value="Repair"/>
+			<Value value="Sales"/>
+			<Value value="Service"/>
+			<Value value="Support"/>
+			<Value value="Transport"/>
+		</DataField>
+		<DataField name="Age" optype="continuous" dataType="double">
+			<Interval closure="closedClosed" leftMargin="17" rightMargin="83"/>
+		</DataField>
+		<DataField name="Hours" optype="continuous" dataType="double">
+			<Interval closure="closedClosed" leftMargin="1" rightMargin="99"/>
+		</DataField>
+		<DataField name="Income" optype="continuous" dataType="double">
+			<Interval closure="closedClosed" leftMargin="609.72" rightMargin="481259.5"/>
+		</DataField>
+	</DataDictionary>
+	<TransformationDictionary/>
+	<RegressionModel functionName="classification" normalizationMethod="logit">
+		<MiningSchema>
+			<MiningField name="Adjusted" usageType="target"/>
+			<MiningField name="Education" missingValueTreatment="asIs" invalidValueTreatment="asIs"/>
+			<MiningField name="Marital" missingValueTreatment="asIs" invalidValueTreatment="asIs"/>
+			<MiningField name="Occupation" missingValueTreatment="asIs" invalidValueTreatment="asIs"/>
+			<MiningField name="Age" missingValueTreatment="asIs" invalidValueTreatment="asIs"/>
+			<MiningField name="Hours" missingValueTreatment="asIs" invalidValueTreatment="asIs"/>
+			<MiningField name="Income" missingValueTreatment="asIs" invalidValueTreatment="asIs"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability(0)" optype="continuous" dataType="double" feature="probability" value="0"/>
+			<OutputField name="probability(1)" optype="continuous" dataType="double" feature="probability" value="1"/>
+		</Output>
+		<ModelStats>
+			<UnivariateStats field="Education">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<DiscrStats>
+					<Array type="string">Associate Bachelor College Doctorate HSgrad Master Preschool Professional Vocational Yr10 Yr11 Yr12 Yr1t4 Yr5t6 Yr7t8 Yr9</Array>
+					<Array type="int">67 332 418 24 633 98 6 23 81 54 65 15 5 21 32 25</Array>
+				</DiscrStats>
+			</UnivariateStats>
+			<UnivariateStats field="Marital">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<DiscrStats>
+					<Array type="string">Absent Divorced Married Married-spouse-absent Unmarried Widowed</Array>
+					<Array type="int">633 256 878 21 64 47</Array>
+				</DiscrStats>
+			</UnivariateStats>
+			<UnivariateStats field="Occupation">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<DiscrStats>
+					<Array type="string">Cleaner Clerical Executive Farming Home Machinist Military Professional Protective Repair Sales Service Support Transport</Array>
+					<Array type="int">91 232 289 58 5 139 1 247 40 225 206 210 49 107</Array>
+				</DiscrStats>
+			</UnivariateStats>
+			<UnivariateStats field="Age">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<NumericInfo minimum="17" maximum="83" mean="38.30279094260137" standardDeviation="13.010323102003973" median="37.0" interQuartileRange="19.0"/>
+			</UnivariateStats>
+			<UnivariateStats field="Hours">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<NumericInfo minimum="1" maximum="99" mean="40.56714060031596" standardDeviation="11.656262333704255" median="40.0" interQuartileRange="5.0"/>
+			</UnivariateStats>
+			<UnivariateStats field="Income">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<NumericInfo minimum="609.72" maximum="481259.5" mean="84404.87069510268" standardDeviation="69670.62788525566" median="59534.87" interQuartileRange="79343.92"/>
+			</UnivariateStats>
+		</ModelStats>
+		<LocalTransformations>
+			<DerivedField name="standard_scaler(Age)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="Age"/>
+						<Constant dataType="double">38.30279094260137</Constant>
+					</Apply>
+					<Constant dataType="double">13.010323102003973</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="standard_scaler(Hours)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="Hours"/>
+						<Constant dataType="double">40.56714060031596</Constant>
+					</Apply>
+					<Constant dataType="double">11.656262333704255</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="standard_scaler(Income)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="Income"/>
+						<Constant dataType="double">84404.87069510268</Constant>
+					</Apply>
+					<Constant dataType="double">69670.62788525566</Constant>
+				</Apply>
+			</DerivedField>
+		</LocalTransformations>
+		<RegressionTable intercept="-3.3373475189894006" targetCategory="1">
+			<NumericPredictor name="standard_scaler(Age)" coefficient="0.3335509069029747"/>
+			<NumericPredictor name="standard_scaler(Hours)" coefficient="0.3621537195525769"/>
+			<NumericPredictor name="standard_scaler(Income)" coefficient="0.1221901553768784"/>
+			<CategoricalPredictor name="Education" value="Bachelor" coefficient="0.9293022364720087"/>
+			<CategoricalPredictor name="Education" value="Master" coefficient="1.1042053663704567"/>
+			<CategoricalPredictor name="Marital" value="Absent" coefficient="-0.0976554957946017"/>
+			<CategoricalPredictor name="Marital" value="Married" coefficient="2.394154331668566"/>
+			<CategoricalPredictor name="Occupation" value="Executive" coefficient="0.9637485748978631"/>
+			<CategoricalPredictor name="Occupation" value="Professional" coefficient="0.9743180181707152"/>
+			<CategoricalPredictor name="Occupation" value="Service" coefficient="-1.127773561296341"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.0" targetCategory="0"/>
+		<ModelVerification recordCount="5">
+			<VerificationFields>
+				<VerificationField field="Education" column="data:Education"/>
+				<VerificationField field="Marital" column="data:Marital"/>
+				<VerificationField field="Occupation" column="data:Occupation"/>
+				<VerificationField field="Age" column="data:Age"/>
+				<VerificationField field="Hours" column="data:Hours"/>
+				<VerificationField field="Income" column="data:Income"/>
+				<VerificationField field="probability(0)" column="data:probability_0" precision="1.0E-13" zeroThreshold="1.0E-13"/>
+				<VerificationField field="probability(1)" column="data:probability_1" precision="1.0E-13" zeroThreshold="1.0E-13"/>
+			</VerificationFields>
+			<InlineTable>
+				<row>
+					<data:Education>Vocational</data:Education>
+					<data:Marital>Married</data:Marital>
+					<data:Occupation>Service</data:Occupation>
+					<data:Age>28</data:Age>
+					<data:Hours>40</data:Hours>
+					<data:Income>79749.71</data:Income>
+					<data:probability_0>0.9137958329890643</data:probability_0>
+					<data:probability_1>0.08620416701093567</data:probability_1>
+				</row>
+				<row>
+					<data:Education>HSgrad</data:Education>
+					<data:Marital>Divorced</data:Marital>
+					<data:Occupation>Service</data:Occupation>
+					<data:Age>32</data:Age>
+					<data:Hours>25</data:Hours>
+					<data:Income>45951.16</data:Income>
+					<data:probability_0>0.9943913007885723</data:probability_0>
+					<data:probability_1>0.005608699211427674</data:probability_1>
+				</row>
+				<row>
+					<data:Education>HSgrad</data:Education>
+					<data:Marital>Divorced</data:Marital>
+					<data:Occupation>Sales</data:Occupation>
+					<data:Age>45</data:Age>
+					<data:Hours>40</data:Hours>
+					<data:Income>233344.97</data:Income>
+					<data:probability_0>0.9489259489437647</data:probability_0>
+					<data:probability_1>0.05107405105623528</data:probability_1>
+				</row>
+				<row>
+					<data:Education>HSgrad</data:Education>
+					<data:Marital>Married</data:Marital>
+					<data:Occupation>Farming</data:Occupation>
+					<data:Age>47</data:Age>
+					<data:Hours>60</data:Hours>
+					<data:Income>46025.74</data:Income>
+					<data:probability_0>0.5458114804658041</data:probability_0>
+					<data:probability_1>0.4541885195341959</data:probability_1>
+				</row>
+				<row>
+					<data:Education>HSgrad</data:Education>
+					<data:Marital>Divorced</data:Marital>
+					<data:Occupation>Sales</data:Occupation>
+					<data:Age>54</data:Age>
+					<data:Hours>35</data:Hours>
+					<data:Income>218259.97</data:Income>
+					<data:probability_0>0.9465016200335765</data:probability_0>
+					<data:probability_1>0.053498379966423516</data:probability_1>
+				</row>
+			</InlineTable>
+		</ModelVerification>
+	</RegressionModel>
+</PMML>

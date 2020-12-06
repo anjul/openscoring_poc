@@ -1,0 +1,898 @@
+Jan 10, 2020 3:14:44 AM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: HK2 failure has been detected in a code that does not run in an active Jersey Error scope.
+WARNING: HK2 service reification failed for [org.glassfish.jersey.message.internal.DataSourceProvider] with an exception:
+MultiException stack 1 of 2
+java.lang.NoClassDefFoundError: javax/activation/DataSource
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3143)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2363)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1378)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1374)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at org.jvnet.hk2.internal.Utilities.getAllConstructors(Utilities.java:1374)
+	at org.jvnet.hk2.internal.Utilities.findProducerConstructor(Utilities.java:1317)
+	at org.jvnet.hk2.internal.DefaultClassAnalyzer.getConstructor(DefaultClassAnalyzer.java:83)
+	at org.glassfish.jersey.inject.hk2.JerseyClassAnalyzer.getConstructor(JerseyClassAnalyzer.java:148)
+	at org.jvnet.hk2.internal.Utilities.getConstructor(Utilities.java:180)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:129)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:180)
+	at org.jvnet.hk2.internal.SystemDescriptor.internalReify(SystemDescriptor.java:740)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:694)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:337)
+	at org.glassfish.jersey.internal.inject.Providers.getCustomProviders(Providers.java:175)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:238)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.activation.DataSource
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 48 more
+MultiException stack 2 of 2
+java.lang.IllegalArgumentException: Errors were discovered while reifying SystemDescriptor(
+	implementation=org.glassfish.jersey.message.internal.DataSourceProvider
+	contracts={javax.ws.rs.ext.MessageBodyWriter,javax.ws.rs.ext.MessageBodyReader}
+	scope=javax.inject.Singleton
+	qualifiers={}
+	descriptorType=CLASS
+	descriptorVisibility=NORMAL
+	metadata=
+	rank=0
+	loader=null
+	proxiable=null
+	proxyForSameScope=null
+	analysisName=null
+	id=14
+	locatorId=0
+	identityHashCode=634297796
+	reified=false)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:705)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:337)
+	at org.glassfish.jersey.internal.inject.Providers.getCustomProviders(Providers.java:175)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:238)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+
+
+Jan 10, 2020 3:14:44 AM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: HK2 failure has been detected in a code that does not run in an active Jersey Error scope.
+WARNING: HK2 service reification failed for [org.glassfish.jersey.message.internal.DataSourceProvider] with an exception:
+MultiException stack 1 of 2
+java.lang.NoClassDefFoundError: javax/activation/DataSource
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3143)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2363)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1378)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1374)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at org.jvnet.hk2.internal.Utilities.getAllConstructors(Utilities.java:1374)
+	at org.jvnet.hk2.internal.Utilities.findProducerConstructor(Utilities.java:1317)
+	at org.jvnet.hk2.internal.DefaultClassAnalyzer.getConstructor(DefaultClassAnalyzer.java:83)
+	at org.glassfish.jersey.inject.hk2.JerseyClassAnalyzer.getConstructor(JerseyClassAnalyzer.java:148)
+	at org.jvnet.hk2.internal.Utilities.getConstructor(Utilities.java:180)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:129)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:180)
+	at org.jvnet.hk2.internal.SystemDescriptor.internalReify(SystemDescriptor.java:740)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:694)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:337)
+	at org.glassfish.jersey.internal.inject.Providers.getCustomProviders(Providers.java:175)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:238)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.activation.DataSource
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 48 more
+MultiException stack 2 of 2
+java.lang.IllegalArgumentException: Errors were discovered while reifying SystemDescriptor(
+	implementation=org.glassfish.jersey.message.internal.DataSourceProvider
+	contracts={javax.ws.rs.ext.MessageBodyWriter,javax.ws.rs.ext.MessageBodyReader}
+	scope=javax.inject.Singleton
+	qualifiers={}
+	descriptorType=CLASS
+	descriptorVisibility=NORMAL
+	metadata=
+	rank=0
+	loader=null
+	proxiable=null
+	proxyForSameScope=null
+	analysisName=null
+	id=14
+	locatorId=0
+	identityHashCode=634297796
+	reified=false)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:705)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:337)
+	at org.glassfish.jersey.internal.inject.Providers.getCustomProviders(Providers.java:175)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:238)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+
+
+Jan 10, 2020 3:14:44 AM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: HK2 failure has been detected in a code that does not run in an active Jersey Error scope.
+WARNING: HK2 service reification failed for [org.glassfish.jersey.message.internal.DataSourceProvider] with an exception:
+MultiException stack 1 of 2
+java.lang.NoClassDefFoundError: javax/activation/DataSource
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3143)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2363)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1378)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1374)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at org.jvnet.hk2.internal.Utilities.getAllConstructors(Utilities.java:1374)
+	at org.jvnet.hk2.internal.Utilities.findProducerConstructor(Utilities.java:1317)
+	at org.jvnet.hk2.internal.DefaultClassAnalyzer.getConstructor(DefaultClassAnalyzer.java:83)
+	at org.glassfish.jersey.inject.hk2.JerseyClassAnalyzer.getConstructor(JerseyClassAnalyzer.java:148)
+	at org.jvnet.hk2.internal.Utilities.getConstructor(Utilities.java:180)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:129)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:180)
+	at org.jvnet.hk2.internal.SystemDescriptor.internalReify(SystemDescriptor.java:740)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:694)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:329)
+	at org.glassfish.jersey.internal.inject.Providers.getProviders(Providers.java:157)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:239)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.activation.DataSource
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 48 more
+MultiException stack 2 of 2
+java.lang.IllegalArgumentException: Errors were discovered while reifying SystemDescriptor(
+	implementation=org.glassfish.jersey.message.internal.DataSourceProvider
+	contracts={javax.ws.rs.ext.MessageBodyWriter,javax.ws.rs.ext.MessageBodyReader}
+	scope=javax.inject.Singleton
+	qualifiers={}
+	descriptorType=CLASS
+	descriptorVisibility=NORMAL
+	metadata=
+	rank=0
+	loader=null
+	proxiable=null
+	proxyForSameScope=null
+	analysisName=null
+	id=14
+	locatorId=0
+	identityHashCode=634297796
+	reified=false)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:705)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:329)
+	at org.glassfish.jersey.internal.inject.Providers.getProviders(Providers.java:157)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:239)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+
+
+Jan 10, 2020 3:14:44 AM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: HK2 failure has been detected in a code that does not run in an active Jersey Error scope.
+WARNING: HK2 service reification failed for [org.glassfish.jersey.message.internal.DataSourceProvider] with an exception:
+MultiException stack 1 of 2
+java.lang.NoClassDefFoundError: javax/activation/DataSource
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3143)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2363)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1378)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1374)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at org.jvnet.hk2.internal.Utilities.getAllConstructors(Utilities.java:1374)
+	at org.jvnet.hk2.internal.Utilities.findProducerConstructor(Utilities.java:1317)
+	at org.jvnet.hk2.internal.DefaultClassAnalyzer.getConstructor(DefaultClassAnalyzer.java:83)
+	at org.glassfish.jersey.inject.hk2.JerseyClassAnalyzer.getConstructor(JerseyClassAnalyzer.java:148)
+	at org.jvnet.hk2.internal.Utilities.getConstructor(Utilities.java:180)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:129)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:180)
+	at org.jvnet.hk2.internal.SystemDescriptor.internalReify(SystemDescriptor.java:740)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:694)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:329)
+	at org.glassfish.jersey.internal.inject.Providers.getProviders(Providers.java:157)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:239)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.activation.DataSource
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 48 more
+MultiException stack 2 of 2
+java.lang.IllegalArgumentException: Errors were discovered while reifying SystemDescriptor(
+	implementation=org.glassfish.jersey.message.internal.DataSourceProvider
+	contracts={javax.ws.rs.ext.MessageBodyWriter,javax.ws.rs.ext.MessageBodyReader}
+	scope=javax.inject.Singleton
+	qualifiers={}
+	descriptorType=CLASS
+	descriptorVisibility=NORMAL
+	metadata=
+	rank=0
+	loader=null
+	proxiable=null
+	proxyForSameScope=null
+	analysisName=null
+	id=14
+	locatorId=0
+	identityHashCode=634297796
+	reified=false)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:705)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:329)
+	at org.glassfish.jersey.internal.inject.Providers.getProviders(Providers.java:157)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:239)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+
+
+Jan 10, 2020 3:14:44 AM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: HK2 failure has been detected in a code that does not run in an active Jersey Error scope.
+WARNING: HK2 service reification failed for [org.glassfish.jersey.message.internal.DataSourceProvider] with an exception:
+MultiException stack 1 of 2
+java.lang.NoClassDefFoundError: javax/activation/DataSource
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3143)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2363)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1378)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1374)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at org.jvnet.hk2.internal.Utilities.getAllConstructors(Utilities.java:1374)
+	at org.jvnet.hk2.internal.Utilities.findProducerConstructor(Utilities.java:1317)
+	at org.jvnet.hk2.internal.DefaultClassAnalyzer.getConstructor(DefaultClassAnalyzer.java:83)
+	at org.glassfish.jersey.inject.hk2.JerseyClassAnalyzer.getConstructor(JerseyClassAnalyzer.java:148)
+	at org.jvnet.hk2.internal.Utilities.getConstructor(Utilities.java:180)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:129)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:180)
+	at org.jvnet.hk2.internal.SystemDescriptor.internalReify(SystemDescriptor.java:740)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:694)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:337)
+	at org.glassfish.jersey.internal.inject.Providers.getCustomProviders(Providers.java:175)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:264)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.activation.DataSource
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 48 more
+MultiException stack 2 of 2
+java.lang.IllegalArgumentException: Errors were discovered while reifying SystemDescriptor(
+	implementation=org.glassfish.jersey.message.internal.DataSourceProvider
+	contracts={javax.ws.rs.ext.MessageBodyWriter,javax.ws.rs.ext.MessageBodyReader}
+	scope=javax.inject.Singleton
+	qualifiers={}
+	descriptorType=CLASS
+	descriptorVisibility=NORMAL
+	metadata=
+	rank=0
+	loader=null
+	proxiable=null
+	proxyForSameScope=null
+	analysisName=null
+	id=14
+	locatorId=0
+	identityHashCode=634297796
+	reified=false)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:705)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:337)
+	at org.glassfish.jersey.internal.inject.Providers.getCustomProviders(Providers.java:175)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:264)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+
+
+Jan 10, 2020 3:14:44 AM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: HK2 failure has been detected in a code that does not run in an active Jersey Error scope.
+WARNING: HK2 service reification failed for [org.glassfish.jersey.message.internal.DataSourceProvider] with an exception:
+MultiException stack 1 of 2
+java.lang.NoClassDefFoundError: javax/activation/DataSource
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3143)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2363)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1378)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1374)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at org.jvnet.hk2.internal.Utilities.getAllConstructors(Utilities.java:1374)
+	at org.jvnet.hk2.internal.Utilities.findProducerConstructor(Utilities.java:1317)
+	at org.jvnet.hk2.internal.DefaultClassAnalyzer.getConstructor(DefaultClassAnalyzer.java:83)
+	at org.glassfish.jersey.inject.hk2.JerseyClassAnalyzer.getConstructor(JerseyClassAnalyzer.java:148)
+	at org.jvnet.hk2.internal.Utilities.getConstructor(Utilities.java:180)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:129)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:180)
+	at org.jvnet.hk2.internal.SystemDescriptor.internalReify(SystemDescriptor.java:740)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:694)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:337)
+	at org.glassfish.jersey.internal.inject.Providers.getCustomProviders(Providers.java:175)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:264)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.activation.DataSource
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 48 more
+MultiException stack 2 of 2
+java.lang.IllegalArgumentException: Errors were discovered while reifying SystemDescriptor(
+	implementation=org.glassfish.jersey.message.internal.DataSourceProvider
+	contracts={javax.ws.rs.ext.MessageBodyWriter,javax.ws.rs.ext.MessageBodyReader}
+	scope=javax.inject.Singleton
+	qualifiers={}
+	descriptorType=CLASS
+	descriptorVisibility=NORMAL
+	metadata=
+	rank=0
+	loader=null
+	proxiable=null
+	proxyForSameScope=null
+	analysisName=null
+	id=14
+	locatorId=0
+	identityHashCode=634297796
+	reified=false)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:705)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:337)
+	at org.glassfish.jersey.internal.inject.Providers.getCustomProviders(Providers.java:175)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:264)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+
+
+Jan 10, 2020 3:14:44 AM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: HK2 failure has been detected in a code that does not run in an active Jersey Error scope.
+WARNING: HK2 service reification failed for [org.glassfish.jersey.message.internal.DataSourceProvider] with an exception:
+MultiException stack 1 of 2
+java.lang.NoClassDefFoundError: javax/activation/DataSource
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3143)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2363)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1378)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1374)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at org.jvnet.hk2.internal.Utilities.getAllConstructors(Utilities.java:1374)
+	at org.jvnet.hk2.internal.Utilities.findProducerConstructor(Utilities.java:1317)
+	at org.jvnet.hk2.internal.DefaultClassAnalyzer.getConstructor(DefaultClassAnalyzer.java:83)
+	at org.glassfish.jersey.inject.hk2.JerseyClassAnalyzer.getConstructor(JerseyClassAnalyzer.java:148)
+	at org.jvnet.hk2.internal.Utilities.getConstructor(Utilities.java:180)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:129)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:180)
+	at org.jvnet.hk2.internal.SystemDescriptor.internalReify(SystemDescriptor.java:740)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:694)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:329)
+	at org.glassfish.jersey.internal.inject.Providers.getProviders(Providers.java:157)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:265)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.activation.DataSource
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 48 more
+MultiException stack 2 of 2
+java.lang.IllegalArgumentException: Errors were discovered while reifying SystemDescriptor(
+	implementation=org.glassfish.jersey.message.internal.DataSourceProvider
+	contracts={javax.ws.rs.ext.MessageBodyWriter,javax.ws.rs.ext.MessageBodyReader}
+	scope=javax.inject.Singleton
+	qualifiers={}
+	descriptorType=CLASS
+	descriptorVisibility=NORMAL
+	metadata=
+	rank=0
+	loader=null
+	proxiable=null
+	proxyForSameScope=null
+	analysisName=null
+	id=14
+	locatorId=0
+	identityHashCode=634297796
+	reified=false)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:705)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:329)
+	at org.glassfish.jersey.internal.inject.Providers.getProviders(Providers.java:157)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:265)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+
+
+Jan 10, 2020 3:14:44 AM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: HK2 failure has been detected in a code that does not run in an active Jersey Error scope.
+WARNING: HK2 service reification failed for [org.glassfish.jersey.message.internal.DataSourceProvider] with an exception:
+MultiException stack 1 of 2
+java.lang.NoClassDefFoundError: javax/activation/DataSource
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3143)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2363)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1378)
+	at org.jvnet.hk2.internal.Utilities$3.run(Utilities.java:1374)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:310)
+	at org.jvnet.hk2.internal.Utilities.getAllConstructors(Utilities.java:1374)
+	at org.jvnet.hk2.internal.Utilities.findProducerConstructor(Utilities.java:1317)
+	at org.jvnet.hk2.internal.DefaultClassAnalyzer.getConstructor(DefaultClassAnalyzer.java:83)
+	at org.glassfish.jersey.inject.hk2.JerseyClassAnalyzer.getConstructor(JerseyClassAnalyzer.java:148)
+	at org.jvnet.hk2.internal.Utilities.getConstructor(Utilities.java:180)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:129)
+	at org.jvnet.hk2.internal.ClazzCreator.initialize(ClazzCreator.java:180)
+	at org.jvnet.hk2.internal.SystemDescriptor.internalReify(SystemDescriptor.java:740)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:694)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:329)
+	at org.glassfish.jersey.internal.inject.Providers.getProviders(Providers.java:157)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:265)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.activation.DataSource
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 48 more
+MultiException stack 2 of 2
+java.lang.IllegalArgumentException: Errors were discovered while reifying SystemDescriptor(
+	implementation=org.glassfish.jersey.message.internal.DataSourceProvider
+	contracts={javax.ws.rs.ext.MessageBodyWriter,javax.ws.rs.ext.MessageBodyReader}
+	scope=javax.inject.Singleton
+	qualifiers={}
+	descriptorType=CLASS
+	descriptorVisibility=NORMAL
+	metadata=
+	rank=0
+	loader=null
+	proxiable=null
+	proxyForSameScope=null
+	analysisName=null
+	id=14
+	locatorId=0
+	identityHashCode=634297796
+	reified=false)
+	at org.jvnet.hk2.internal.SystemDescriptor.reify(SystemDescriptor.java:705)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.reifyDescriptor(ServiceLocatorImpl.java:464)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.narrow(ServiceLocatorImpl.java:2310)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.access$1200(ServiceLocatorImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1395)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl$9.compute(ServiceLocatorImpl.java:1390)
+	at org.glassfish.hk2.utilities.cache.internal.WeakCARCacheImpl.compute(WeakCARCacheImpl.java:128)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.internalGetAllServiceHandles(ServiceLocatorImpl.java:1452)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1377)
+	at org.jvnet.hk2.internal.ServiceLocatorImpl.getAllServiceHandles(ServiceLocatorImpl.java:1366)
+	at org.glassfish.jersey.inject.hk2.AbstractHk2InjectionManager.getAllServiceHolders(AbstractHk2InjectionManager.java:158)
+	at org.glassfish.jersey.inject.hk2.ImmediateHk2InjectionManager.getAllServiceHolders(ImmediateHk2InjectionManager.java:54)
+	at org.glassfish.jersey.internal.inject.Providers.getServiceHolders(Providers.java:329)
+	at org.glassfish.jersey.internal.inject.Providers.getProviders(Providers.java:157)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory.initialize(MessageBodyFactory.java:265)
+	at org.glassfish.jersey.message.internal.MessageBodyFactory$MessageBodyWorkersConfigurator.postInit(MessageBodyFactory.java:136)
+	at org.glassfish.jersey.client.ClientConfig$State.lambda$initRuntime$2(ClientConfig.java:470)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4411)
+	at org.glassfish.jersey.client.ClientConfig$State.initRuntime(ClientConfig.java:470)
+	at org.glassfish.jersey.internal.util.collection.Values$LazyValueImpl.get(Values.java:341)
+	at org.glassfish.jersey.client.ClientConfig.getRuntime(ClientConfig.java:826)
+	at org.glassfish.jersey.client.ClientRequest.getConfiguration(ClientRequest.java:285)
+	at org.glassfish.jersey.client.JerseyInvocation.validateHttpMethodAndEntity(JerseyInvocation.java:143)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:112)
+	at org.glassfish.jersey.client.JerseyInvocation.<init>(JerseyInvocation.java:99)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:238)
+	at org.glassfish.jersey.client.JerseyInvocation$Builder.buildPut(JerseyInvocation.java:171)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:81)
+	at org.openscoring.client.Deployer$1.perform(Deployer.java:71)
+	at org.openscoring.client.ModelApplication.execute(ModelApplication.java:51)
+	at org.openscoring.client.Deployer.deploy(Deployer.java:90)
+	at org.openscoring.client.Deployer.run(Deployer.java:58)
+	at org.openscoring.client.Application.run(Application.java:64)
+	at org.openscoring.client.Deployer.main(Deployer.java:53)
+
+
+Jan 10, 2020 3:14:45 AM org.openscoring.client.Deployer run
+INFO: Deployment succeeded: ModelResponse{id=GridSearchAudit, miningFunction=classification, summary=Regression, properties={created.timestamp=2020-01-10T03:14:45.179+0000, accessed.timestamp=null, file.size=10003, file.md5sum=75d2d30bc88534159248b41bb4e04638}, schema={inputFields=[Field{id=Education, name=null, dataType=string, opType=categorical, values=[Associate, Bachelor, College, Doctorate, HSgrad, Master, Preschool, Professional, Vocational, Yr10, Yr11, Yr12, Yr1t4, Yr5t6, Yr7t8, Yr9]}, Field{id=Marital, name=null, dataType=string, opType=categorical, values=[Absent, Divorced, Married, Married-spouse-absent, Unmarried, Widowed]}, Field{id=Occupation, name=null, dataType=string, opType=categorical, values=[Cleaner, Clerical, Executive, Farming, Home, Machinist, Military, Professional, Protective, Repair, Sales, Service, Support, Transport]}, Field{id=Age, name=null, dataType=double, opType=continuous, values=[[17.0, 83.0]]}, Field{id=Hours, name=null, dataType=double, opType=continuous, values=[[1.0, 99.0]]}, Field{id=Income, name=null, dataType=double, opType=continuous, values=[[609.72, 481259.5]]}], groupFields=[], targetFields=[Field{id=Adjusted, name=null, dataType=integer, opType=categorical, values=[0, 1]}], outputFields=[Field{id=probability(0), name=null, dataType=double, opType=continuous, values=null}, Field{id=probability(1), name=null, dataType=double, opType=continuous, values=null}]}}

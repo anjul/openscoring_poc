@@ -1,0 +1,27 @@
+{
+  "id": "batch-001",
+  "requests": [
+    {
+      "id": "record-001",
+      "arguments": {
+        "Age": 35,
+        "Hours": 45,
+        "Income": 50000,
+        "Education": "College",
+        "Marital": "Unmarried",
+        "Occupation": "Executive"
+      }
+    },
+    {
+      "id": "record-002",
+      "arguments": {
+        "Age": 55,
+        "Hours": 50,
+        "Income": 60000,
+        "Education": "College",
+        "Marital": "Married",
+        "Occupation": "Executive"
+      }
+    }
+  ]
+}
